@@ -25,9 +25,9 @@ def create_annotation(path):
     images = os.listdir(images_path)
     masks = os.listdir(masks_path)
 
-    meningioma_images = [image for image in images if image + '_meningioma' in image]
-    glioma_images = [image for image in images if image + '_glioma' in image]
-    pituitary_tumor_images = [image for image in images if image + '_pituitarytumor' in image]
+    meningioma_images = [image for image in images if image + '_meningioma' in images]
+    glioma_images = [image for image in images if image + '_glioma' in images]
+    pituitary_tumor_images = [image for image in images if image + '_pituitarytumor' in images]
 
 
     meningioma= pd.DataFrame(columns=['img', 'target'])
@@ -60,8 +60,9 @@ def create_original_data(path,out):
     images = os.listdir(images_path)
     masks = os.listdir(masks_path)
 
-    covid_images =[image for image in images if 'mask_'+image in masks]
-    no_covid_images =[image for image in images if 'mask_'+image not in masks]
+    meningioma_images = [image for image in images if image + '_meningioma' in images]
+    glioma_images = [image for image in images if image + '_glioma' in images]
+    pituitary_tumor_images = [image for image in images if image + '_pituitarytumor' in images]
 
     print('copy original data')
     for img_file in tqdm(meningioma_images):
