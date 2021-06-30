@@ -1,17 +1,12 @@
-# QaTa-Cov19-Segmentation
-Application of U-Net in Covid 19 Segmentation<br>
-This Implementation Achived **97% accuracy** in chest x-ray Covid19 Segmentation with U-Net
-![QataSeg](./Figure_1.png)
+# brain-tumor-Segmentation
+Application of U-Net in brin tumor Segmentation<br>
+This Implementation Achived **99% accuracy** in chest mri brain tumor Segmentation with U-Net
+
 <br>
 # Dataset
-Download Dataset from [COVID-19 Infection Map Generation and Diagnosis from Chest X-Ray Images](https://www.kaggle.com/aysendegerli/qatacov19-dataset)
 
-```
-  /data/QaTa-COV19
-    /data/QaTa-COV19/QaTa-COV19
-      /data/QaTa-COV19/QaTa-COV19/Images
-      /data/QaTa-COV19/QaTa-COV19/Ground-truths
-```
+
+
 
 ## U-Net: Convolutional Networks for Biomedical Image Segmentation 
 Writers: Olaf Ronneberger, Philipp Fischer, and Thomas Brox <br>
