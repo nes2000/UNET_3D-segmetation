@@ -25,18 +25,24 @@ def create_annotation(path):
     images = os.listdir(images_path)
     masks = os.listdir(masks_path)
 
-    covid_images =[image for image in images if 'mask_'+image in masks]
-    no_covid_images =[image for image in images if 'mask_'+image not in masks]
+    meningioma_images = [image for image in images if image + '_meningioma' in image]
+    glioma_images = [image for image in images if image + '_glioma' in image]
+    pituitary_tumor_images = [image for image in images if image + '_pituitarytumor' in image]
 
-    covid = pd.DataFrame(columns=['img','target'])
-    no_covid = pd.DataFrame(columns=['img','target'])
 
-    covid['img'] = covid_images
-    covid['target'] = 1
-    no_covid['img'] = no_covid_images
-    no_covid['target'] = 0
+    meningioma= pd.DataFrame(columns=['img', 'target'])
+    glioma = pd.DataFrame(columns=['img', 'target'])
+    pituitary_tumor = pd.DataFrame(columns=['img', 'target'])
 
-    annotation = pd.concat([covid,no_covid])
+    meningioma['img'] = meningioma_images
+    meningioma['target'] = 1
+    glioma['img'] = glioma_images
+    glioma['target'] = 2
+    pituitary_tumor['img'] = pituitary_tumor_images
+    pituitary_tumor['target'] = 3
+
+
+    annotation = pd.concat([meningioma, glioma,pituitary_tumor])
 
     annotation = annotation.reset_index()
 
@@ -58,11 +64,40 @@ def create_original_data(path,out):
     no_covid_images =[image for image in images if 'mask_'+image not in masks]
 
     print('copy original data')
-    for img_file in tqdm(covid_images):
+    for img_file in tqdm(meningioma_images):
         copyfile(os.path.join(images_path,img_file),
                 os.path.join(images_out,img_file))
         copyfile(os.path.join(masks_path,'mask_'+img_file),
-                os.path.join(masks_out,'maks_'+img_file))
+                os.path.join(masks_out,'mask_'+img_file))
+
+        img = np.array(Image.open(os.path.join(images_path,img_file)).convert('L'))
+
+        mask = np.array(Image.open(os.path.join(masks_path,'mask_'+img_file)).convert('L'))
+
+        croped = np.where(mask == 0, 0, img).astype(np.uint8)
+
+        Image.fromarray(croped).save(os.path.join(croped_out,'croped_'+img_file))
+      
+      
+     for img_file in tqdm(glioma_images):
+        copyfile(os.path.join(images_path,img_file),
+                os.path.join(images_out,img_file))
+        copyfile(os.path.join(masks_path,'mask_'+img_file),
+                os.path.join(masks_out,'mask_'+img_file))
+
+        img = np.array(Image.open(os.path.join(images_path,img_file)).convert('L'))
+
+        mask = np.array(Image.open(os.path.join(masks_path,'mask_'+img_file)).convert('L'))
+
+        croped = np.where(mask == 0, 0, img).astype(np.uint8)
+
+        Image.fromarray(croped).save(os.path.join(croped_out,'croped_'+img_file))
+     
+     for img_file in tqdm(pituitary_tumor_images):
+        copyfile(os.path.join(images_path,img_file),
+                os.path.join(images_out,img_file))
+        copyfile(os.path.join(masks_path,'mask_'+img_file),
+                os.path.join(masks_out,'mask_'+img_file))
 
         img = np.array(Image.open(os.path.join(images_path,img_file)).convert('L'))
 
@@ -73,9 +108,9 @@ def create_original_data(path,out):
         Image.fromarray(croped).save(os.path.join(croped_out,'croped_'+img_file))
 
     
-    for img_file in tqdm(no_covid_images):
-        copyfile(os.path.join(images_path,img_file),
-                os.path.join(images_out,img_file))
+   ## for img_file in tqdm(no_covid_images):
+     ##   copyfile(os.path.join(images_path,img_file),
+       ##         os.path.join(images_out,img_file))
 
         #copyfile(os.path.join(masks_path,'mask_'+img_file),
         #        os.path.join(masks_out,'maks_'+img_file))
