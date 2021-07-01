@@ -79,36 +79,7 @@ def create_original_data(path,out):
 
         Image.fromarray(croped).save(os.path.join(croped_out,'croped_'+img_file))
       
-   """   
-     for img_file in tqdm(glioma_images):
-        copyfile(os.path.join(images_path,img_file),
-                os.path.join(images_out,img_file))
-        copyfile(os.path.join(masks_path,'mask_'+img_file),
-                os.path.join(masks_out,'mask_'+img_file))
-
-        img = np.array(Image.open(os.path.join(images_path,img_file)).convert('L'))
-
-        mask = np.array(Image.open(os.path.join(masks_path,'mask_'+img_file)).convert('L'))
-
-        croped = np.where(mask == 0, 0, img).astype(np.uint8)
-
-        Image.fromarray(croped).save(os.path.join(croped_out,'croped_'+img_file))
-     
-     for img_file in tqdm(pituitary_tumor_images):
-        copyfile(os.path.join(images_path,img_file),
-                os.path.join(images_out,img_file))
-        copyfile(os.path.join(masks_path,'mask_'+img_file),
-                os.path.join(masks_out,'mask_'+img_file))
-
-        img = np.array(Image.open(os.path.join(images_path,img_file)).convert('L'))
-
-        mask = np.array(Image.open(os.path.join(masks_path,'mask_'+img_file)).convert('L'))
-
-        croped = np.where(mask == 0, 0, img).astype(np.uint8)
-
-        Image.fromarray(croped).save(os.path.join(croped_out,'croped_'+img_file))
-
-    """
+  
    ## for img_file in tqdm(no_covid_images):
      ##   copyfile(os.path.join(images_path,img_file),
        ##         os.path.join(images_out,img_file))
