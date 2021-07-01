@@ -65,7 +65,7 @@ def create_original_data(path,out):
     pituitary_tumor_images = [image for image in images if image + '_pituitarytumor' in images]
 
     print('copy original data')
-    for img_file in tqdm(meningioma_images):
+    for img_file in tqdm(images):
         copyfile(os.path.join(images_path,img_file),
                 os.path.join(images_out,img_file))
         copyfile(os.path.join(masks_path,'mask_'+img_file),
@@ -79,7 +79,7 @@ def create_original_data(path,out):
 
         Image.fromarray(croped).save(os.path.join(croped_out,'croped_'+img_file))
       
-      
+   """   
      for img_file in tqdm(glioma_images):
         copyfile(os.path.join(images_path,img_file),
                 os.path.join(images_out,img_file))
@@ -108,7 +108,7 @@ def create_original_data(path,out):
 
         Image.fromarray(croped).save(os.path.join(croped_out,'croped_'+img_file))
 
-    
+    """
    ## for img_file in tqdm(no_covid_images):
      ##   copyfile(os.path.join(images_path,img_file),
        ##         os.path.join(images_out,img_file))
