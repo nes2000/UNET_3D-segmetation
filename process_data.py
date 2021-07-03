@@ -189,6 +189,9 @@ def main():
 
     args = get_args()
 
+    if not os.path.exists(ars.out):
+        os.mkdir(args.out)
+    
     images_path = os.path.join(args.path,'predict_crop_images')
 
     df = pd.read_csv(os.path.join(args.path,'target.csv'),nrows=10)
