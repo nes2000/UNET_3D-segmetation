@@ -199,7 +199,7 @@ def main():
 
     for row in tqdm(df['img'].values):
 
-        img = np.array(Image.open(os.path.join(images_path,'croped_'+row)).convert('L'))
+        img = np.array(Image.open(os.path.join(images_path,row)).convert('L'))
 
         features = process_image(img,kernels)
 
