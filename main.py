@@ -135,6 +135,7 @@ def train_and_validate(net,criterion, optimizer, scheduler, dataloader,device,ep
 
         print("Total Training time {:.0f}min {:.0f}sec".format(min,sec))
     draw_plots(history)
+    draw_plots2(history)
 
 def test(net,criterion,dataloader,device):
     running_loss = 0.0
@@ -191,8 +192,8 @@ def draw_plots(history):
     plt.legend(['train', 'test'], loc='upper left')
     plt.savefig('./accuracy_plot.png')
     plt.show()
-
-    # summarize history for loss
+def draw_plots2(history):
+     summarize history for loss
     plt.plot(history['train']['loss'])
     plt.plot(history['val']['loss'])
     plt.title('model loss')
