@@ -36,7 +36,7 @@ def train_and_validate(net,criterion, optimizer, scheduler, dataloader,device,ep
 
     history = {'train':{'epoch':[], 'loss' : [] , 'acc':[]},
                'val'  :{'epoch':[], 'loss' : [] , 'acc':[]}}
-    
+
     best_acc = 0.92
     best_loss = 10000000000
     start = time.time()
@@ -118,9 +118,9 @@ def train_and_validate(net,criterion, optimizer, scheduler, dataloader,device,ep
             history[phase]['epoch'].append(epoch)
             history[phase]['loss'].append(epoch_loss)
             history[phase]['acc'].append(epoch_acc)
-    
+
         scheduler.step(history['val']['acc'][-1])
-        scheduler.step(histo['val']['loss'][-1])
+
         time_elapsed = time.time() - since
         print("One Epoch Complete in {:.0f}m {:.0f}s".format(time_elapsed//60 , time_elapsed%60))
 
@@ -135,7 +135,7 @@ def train_and_validate(net,criterion, optimizer, scheduler, dataloader,device,ep
 
         print("Total Training time {:.0f}min {:.0f}sec".format(min,sec))
     draw_plots(history)
-    
+
 def test(net,criterion,dataloader,device):
     running_loss = 0.0
     running_correct = 0
@@ -191,8 +191,8 @@ def draw_plots(history):
     plt.legend(['train', 'test'], loc='upper left')
     plt.savefig('./accuracy_plot.png')
     plt.show()
- #summarize history for loss
- 
+
+    # summarize history for loss
     plt.plot(history['train']['loss'])
     plt.plot(history['val']['loss'])
     plt.title('model loss')
