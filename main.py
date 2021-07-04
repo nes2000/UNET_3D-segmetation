@@ -193,7 +193,7 @@ def draw_plots(history):
     plt.savefig('./accuracy_plot.png')
     plt.show()
 def draw_plots2(history):
-     summarize history for loss
+     #summarize history for loss
     plt.plot(history['train']['loss'])
     plt.plot(history['val']['loss'])
     plt.title('model loss')
