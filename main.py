@@ -194,6 +194,8 @@ def draw_plots(history):
     plt.show()
 def draw_plots2(history):
      #summarize history for loss
+    history = {'train': {'epoch': [], 'loss': []},
+               'val': {'epoch': [], 'loss': []}}
     plt.plot(history['train']['loss'])
     plt.plot(history['val']['loss'])
     plt.title('model loss')
