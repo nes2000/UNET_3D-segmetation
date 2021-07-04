@@ -123,7 +123,7 @@ def train_and_validate(net,criterion, optimizer, scheduler, dataloader,device,ep
             histo[phase]['loss'].append(epoch_loss)
 
         scheduler.step(history['val']['acc'][-1])
-        scheduler.step(histo['val']['acc'][-1])
+        scheduler.step(histo['val']['loss'][-1])
         time_elapsed = time.time() - since
         print("One Epoch Complete in {:.0f}m {:.0f}s".format(time_elapsed//60 , time_elapsed%60))
 
