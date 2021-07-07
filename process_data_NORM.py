@@ -95,13 +95,13 @@ def process_image(img,kernels):
     
     # add normalize
     zipf_features = preprocessing.normalize(zipf_features)
-    #d = preprocessing.normalize(zipf_features)
+    d = preprocessing.normalize(zipf_features)
     # calculate gabor features
     
     #gabor_features_data = gabor_features(img,kernels,32,32)
 
     #return np.concatenate([zipf_features, gabor_features_data])
-    return zipf_features
+    return d
 
 
     
