@@ -197,7 +197,7 @@ def main():
     if not os.path.exists(args.out):
         os.mkdir(args.out)
 
-    images_path = os.path.join(args.path,'croped_lung')
+    images_path = os.path.join(args.path,'predict_crop_images')
 
     #df = pd.read_csv(os.path.join(args.path,'target.csv'),nrows=5)
     df = pd.read_csv(os.path.join(args.path,'target.csv'), nrows = args.nrows)
