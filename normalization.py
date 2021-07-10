@@ -31,16 +31,18 @@ def get_args():
     # set your environment
     parser.add_argument('--path_data',type=str,default='E:/2 MASTER/Memoire/07-06-2021 (croped)/normal_croped/zipf csv')
     parser.add_argument('--path_target', type=str, default='E:/2 MASTER/Memoire/07-06-2021 (croped)/normal_croped/dataset')
-    parser.add_argument('--out', type=str, default='E:/2 MASTER/Memoire/07-06-2021 (croped)/normal_croped/zipf csv')
+    parser.add_argument('--out', type=str, default='./dataset')
     
     return parser.parse_args()
 
 def main():
     
+    args = get_args()
+    
     if not os.path.exists(args.out):
         os.mkdir(args.out)
         
-    args = get_args()
+    
     Normalization(args.path_data, args.path_target, args.out)
 
 if __name__ == '__main__':
