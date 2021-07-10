@@ -36,6 +36,10 @@ def get_args():
     return parser.parse_args()
 
 def main():
+    
+    if not os.path.exists(args.out):
+        os.mkdir(args.out)
+        
     args = get_args()
     Normalization(args.path_data, args.path_target, args.out)
 
