@@ -70,7 +70,7 @@ def create_original_data(path,out):
 
         croped = np.where(mask == 0, 0, img).astype(np.uint8)
 
-        Image.fromarray(croped).save(os.path.join(croped_out,'croped_'+img_file))
+        Image.fromarray(croped).save(os.path.join(croped_out,img_file))
 
     
    # for img_file in tqdm(no_covid_images):
@@ -159,8 +159,8 @@ def main():
         #os.mkdir(os.path.join(args.out,'Images'))
         #os.mkdir(os.path.join(args.out,'Ground-truths'))
         os.mkdir(os.path.join(args.out,'predict_Ground-truths'))
-        #os.mkdir(os.path.join(args.out,'original_crop_images'))
-        os.mkdir(os.path.join(args.out,'predict_crop_images'))
+       # os.mkdir(os.path.join(args.out,'original_crop_images'))
+        #os.mkdir(os.path.join(args.out,'predict_crop_images'))
     
     # set GPU device
     os.environ["CUDA_VISIBLE_DEVICES"] = args.gpu # default: '0'
@@ -196,9 +196,9 @@ def main():
     dataset = QataCovDataset(root_dir = args.path,split=img_list,transforms=eval_transforms)
     dataloader = DataLoader(dataset = dataset , batch_size=16)
     
-    #create_original_data(args.path,args.out)
+    create_original_data(args.path,args.out)
 
-    create_predict_data(args.path,img_list,args.out,model,dataloader,device,args.img_size)
+   #create_predict_data(args.path,img_list,args.out,model,dataloader,device,args.img_size)
 
     #df = create_annotation(args.path)
 
