@@ -156,10 +156,10 @@ def main():
     if ~ os.path.exists(args.out):
         print("path created")
         os.mkdir(args.out)
-        #os.mkdir(os.path.join(args.out,'Images'))
-        #os.mkdir(os.path.join(args.out,'Ground-truths'))
-        os.mkdir(os.path.join(args.out,'predict_Ground-truths'))
-       # os.mkdir(os.path.join(args.out,'original_crop_images'))
+        os.mkdir(os.path.join(args.out,'Images'))
+        os.mkdir(os.path.join(args.out,'Ground-truths'))
+        #os.mkdir(os.path.join(args.out,'predict_Ground-truths'))
+        os.mkdir(os.path.join(args.out,'original_crop_images'))
         #os.mkdir(os.path.join(args.out,'predict_crop_images'))
     
     # set GPU device
