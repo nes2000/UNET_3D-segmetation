@@ -94,9 +94,9 @@ def process_image(img,kernels):
 
     # calculate gabor features
     
-    gabor_features_data = gabor_features(img,kernels,32,32)
+    #gabor_features_data = gabor_features(img,kernels,32,32)
 
-    return np.concatenate([zipf_features, gabor_features_data])
+    return np.concatenate(zipf_features)
 
 
     
@@ -194,7 +194,7 @@ def main():
     
     images_path = os.path.join(args.path,'predict_crop_images')
 
-    df = pd.read_csv(os.path.join(args.path,'target.csv'),nrows=10)
+    df = pd.read_csv(os.path.join(args.path,'target.csv'),nrows=2934)
 
     kernels = gabor_kernels(5,8,39,39)
 
