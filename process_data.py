@@ -10,6 +10,8 @@ from PIL import Image
 import math
 import argparse
 from tqdm import tqdm
+from sklearn import preprocessing
+
 
 from scipy.stats import rankdata
 
