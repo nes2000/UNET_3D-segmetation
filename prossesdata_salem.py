@@ -206,11 +206,11 @@ def main():
     if not os.path.exists(args.out):
         os.mkdir(args.out)
 
-    images_path = os.path.join(args.path)
+    images_path = os.path.join(args.path,'predict_crop_images')
 
     #df = pd.read_csv(os.path.join(args.path,'target.csv'),nrows=5)
-    #df = pd.read_csv(os.path.join(args.path,'target.csv'))
-    df = create_annotation(args.path, 0)
+    df = pd.read_csv(os.path.join(args.path,'target.csv'))
+    #df = create_annotation(args.path, 0)
 
     #kernels = gabor_kernels(5,8,39,39)
 
