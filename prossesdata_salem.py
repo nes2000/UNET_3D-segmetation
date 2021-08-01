@@ -18,7 +18,7 @@ from create_annotation import create_annotation
 import matplotlib.pyplot as plt
 import cv2
 
-def process_image(img):
+def process_image(img,kernels):
 
     # decode image
 
@@ -103,10 +103,10 @@ def process_image(img):
     #d = preprocessing.normalize(zipf_features)
     # calculate gabor features
     
-    #gabor_features_data = gabor_features(img,kernels,32,32)
+    gabor_features_data = gabor_features(img,kernels,32,32)
 
-    #return np.concatenate([zipf_features, gabor_features_data])
-    return zipf_features
+    return np.concatenate([zipf_features, gabor_features_data])
+    #return zipf_features
 
 
     
@@ -212,7 +212,7 @@ def main():
     df = pd.read_csv(os.path.join(args.path,'target.csv'))
     #df = create_annotation(args.path, 0)
 
-    #kernels = gabor_kernels(5,8,39,39)
+    kernels = gabor_kernels(5,8,39,39)
 
     data = []
 
@@ -220,7 +220,7 @@ def main():
 
         img = np.array(Image.open(os.path.join(images_path,row)).convert('L'))
 
-        features = process_image(img)
+        features = process_image(img,kernels)
 
         data.append(features)
 
