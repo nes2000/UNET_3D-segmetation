@@ -26,6 +26,8 @@ def main():
 #data = '/kaggle/input/predicting-a-pulsar-star/pulsar_stars.csv'
 
     args = get_args()
+     if not os.path.exists(args.out):
+        os.mkdir(args.out)
 
     df = pd.read_csv(os.path.join(args.path,'data_normaliz.csv')) #data_concat_non_normaliz
 
