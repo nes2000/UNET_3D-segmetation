@@ -189,6 +189,8 @@ def get_args():
 
     # set your environment
     parser.add_argument('--path',type=str,default='../input')
+    parser.add_argument('--targetpath',type=str,default='../input')
+
     # arguments for training
     #parser.add_argument('--nrows', type = int , default = 3616)
 
@@ -206,10 +208,10 @@ def main():
     if not os.path.exists(args.out):
         os.mkdir(args.out)
 
-    images_path = os.path.join(args.path,'dataset_croped/dataset_croped/predict_crop_images')
+    images_path = os.path.join(args.path,'predict_crop_images')
 
     #df = pd.read_csv(os.path.join(args.path,'target.csv'),nrows=5)
-    df = pd.read_csv(os.path.join(args.path,'target.csv'))
+    df = pd.read_csv(os.path.join(args.targetpath,'target.csv'))
     #df = create_annotation(args.path, 0)
 
     kernels = gabor_kernels(5,8,39,39)
