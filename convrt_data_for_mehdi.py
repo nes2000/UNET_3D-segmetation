@@ -156,11 +156,11 @@ def main():
     if ~ os.path.exists(args.out):
         print("path created")
         os.mkdir(args.out)
-        os.mkdir(os.path.join(args.out,'Images'))
-        os.mkdir(os.path.join(args.out,'Ground-truths'))
-        #os.mkdir(os.path.join(args.out,'predict_Ground-truths'))
-        os.mkdir(os.path.join(args.out,'original_crop_images'))
-        #os.mkdir(os.path.join(args.out,'predict_crop_images'))
+        #os.mkdir(os.path.join(args.out,'Images'))
+        #os.mkdir(os.path.join(args.out,'Ground-truths'))
+        os.mkdir(os.path.join(args.out,'predict_Ground-truths'))
+        #os.mkdir(os.path.join(args.out,'original_crop_images'))
+        os.mkdir(os.path.join(args.out,'predict_crop_images'))
     
     # set GPU device
     os.environ["CUDA_VISIBLE_DEVICES"] = args.gpu # default: '0'
@@ -196,13 +196,13 @@ def main():
     dataset = QataCovDataset(root_dir = args.path,split=img_list,transforms=eval_transforms)
     dataloader = DataLoader(dataset = dataset , batch_size=16)
     
-    create_original_data(args.path,args.out)
+    #create_original_data(args.path,args.out)
 
-   #create_predict_data(args.path,img_list,args.out,model,dataloader,device,args.img_size)
+    create_predict_data(args.path,img_list,args.out,model,dataloader,device,args.img_size)
 
     #df = create_annotation(args.path)
 
-    #df.to_csv(os.path.join(args.out,'target.csv'),index=False)
+    df.to_csv(os.path.join(args.out,'target.csv'),index=False)
 
 
 if __name__ == '__main__':
