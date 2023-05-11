@@ -143,7 +143,7 @@ def get_args():
     # arguments for training
     parser.add_argument('--img_size', type = int , default = 224)
 
-    parser.add_argument('--load_model', type=str, default='best_checkpoint.pt', help='.pth file path to load model')
+    parser.add_argument('--load_model', type=str, default='best_checkpoint.h5', help='.pth file path to load model')
 
     parser.add_argument('--out', type=str, default='./dataset')
     return parser.parse_args()
