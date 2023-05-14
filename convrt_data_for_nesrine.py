@@ -200,7 +200,7 @@ def main():
 
     create_predict_data(args.path,img_list,args.out,model,dataloader,device,args.img_size)
 
-    #df = create_annotation(args.path)
+    df = create_annotation(args.path)
 
     df.to_csv(os.path.join(args.out,'target.csv'),index=False)
 
