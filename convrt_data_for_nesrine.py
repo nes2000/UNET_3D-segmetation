@@ -20,10 +20,10 @@ def create_annotation(path):
 
    
     images_path = os.path.join(path,'Images')
-    masks_path = os.path.join(path,'Ground-truths')
+  #  masks_path = os.path.join(path,'Ground-truths')
     
     images = os.listdir(images_path)
-    masks = os.listdir(masks_path)
+  #  masks = os.listdir(masks_path)
 
     covid_images =[image for image in images if 'mask_'+image in masks]
     no_covid_images =[image for image in images if 'mask_'+image not in masks]
