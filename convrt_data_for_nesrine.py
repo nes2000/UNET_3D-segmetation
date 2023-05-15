@@ -23,7 +23,7 @@ def create_annotation(path):
     masks_path = os.path.join(path,'Ground-truths')
     
     images = os.listdir(images_path)
-  #  masks = os.listdir(masks_path)
+   masks = os.listdir(masks_path)
 
     covid_images =[image for image in images if 'mask_'+image in masks]
     no_covid_images =[image for image in images if 'mask_'+image not in masks]
@@ -45,14 +45,14 @@ def create_annotation(path):
 def create_original_data(path,out):
     
     images_path = os.path.join(path,'Images')
-   # masks_path = os.path.join(path,'Ground-truths')
+   masks_path = os.path.join(path,'Ground-truths')
 
     images_out = os.path.join(out,'Images')
     masks_out = os.path.join(out,'Ground-truths')
     croped_out = os.path.join(out,'original_crop_images')
 
     images = os.listdir(images_path)
-   # masks = os.listdir(masks_path)
+   masks = os.listdir(masks_path)
 
     covid_images =[image for image in images if 'mask_'+image in masks]
     no_covid_images =[image for image in images if 'mask_'+image not in masks]
